@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AB Tiles - Premium Tile Collection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #f59e0b;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #0f172a;
+      --gray-900: #111827;
+      --gray-800: #1f2937;
+      --gray-700: #374151;
+      --gray-600: #4b5563;
+      --gray-500: #6b7280;
+      --gray-400: #9ca3af;
+      --gray-300: #d1d5db;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --gray-50: #f9fafb;
+      --white: #ffffff;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    html { scroll-behavior: smooth; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding: 1rem 2rem;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    nav.scrolled { background: rgba(255,255,255,0.98); box-shadow: var(--shadow-lg); }
+    .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+      font-size: 1.75rem; font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none; transition: transform 0.3s ease;
+    }
+    .logo:hover { transform: scale(1.05); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: 0.95rem;
+      padding: 0.5rem 1rem; border-radius: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      position: relative; overflow: hidden;
+    }
+    .nav-links a::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: var(--gradient-1); transition: left 0.3s ease; z-index: -1; border-radius: 0.75rem;
+    }
+    .nav-links a:hover { color: white; transform: translateY(-2px); }
+    .nav-links a:hover::before { left: 0; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="36" cy="36" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="36" cy="6" r="3"/><circle cx="6" cy="36" r="3"/></g></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .hero-content { text-align: center; z-index: 2; position: relative; max-width: 800px; padding: 2rem; }
+    .hero h1 {
+      font-size: clamp(3rem,8vw,6rem); font-weight: 800; color: white; margin-bottom: 1.5rem;
+      opacity: 0; animation: slideInUp 1s ease 0.5s forwards;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.1;
+    }
+    .hero p {
+      font-size: clamp(1.1rem,3vw,1.5rem); color: rgba(255,255,255,0.9); margin-bottom: 2.5rem;
+      opacity: 0; animation: slideInUp 1s ease 0.7s forwards; font-weight: 400;
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-buttons {
+      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: slideInUp 1s ease 0.9s forwards;
+    }
+    .btn {
+      padding: 1rem 2rem; border: none; border-radius: 0.75rem;
+      font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      min-width: 150px; justify-content: center;
+    }
+    .btn-primary {
+      background: rgba(255,255,255,0.2); color: white;
+      border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px);
+    }
+    .btn-primary:hover { background: white; color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow-xl); }
+    .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+    /* ── Container ── */
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; position: relative; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title {
+      font-size: clamp(2.5rem,5vw,4rem); font-weight: 700; margin-bottom: 1rem;
+      background: var(--gradient-1); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-subtitle { font-size: 1.2rem; color: var(--gray-600); max-width: 600px; margin: 0 auto; }
+
+    /* ── Products ── */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+    .product-card {
+      background: white; border-radius: 1.5rem; overflow: hidden;
+      box-shadow: var(--shadow-md); transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      position: relative; border: 1px solid var(--gray-200);
+    }
+    .product-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-2xl); }
+    .product-image { position: relative; overflow: hidden; height: 250px; }
+    .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .product-card:hover img { transform: scale(1.1); }
+    .product-overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(102,126,234,0.8), rgba(118,75,162,0.8));
+      opacity: 0; transition: opacity 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .product-card:hover .product-overlay { opacity: 1; }
+    .quick-view { color: white; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.3s ease 0.1s; }
+    .product-card:hover .quick-view { opacity: 1; transform: translateY(0); }
+    .product-info { padding: 2rem; }
+    .product-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--gray-900); }
+    .product-price { font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; }
+    .add-to-cart {
+      width: 100%; background: var(--gradient-1); color: white;
+      border: none; padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+      font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+    }
+    .add-to-cart:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+    /* ── Cart ── */
+    .cart-section {
+      background: white; border-radius: 2rem; box-shadow: var(--shadow-xl);
+      padding: 2.5rem; margin: 2rem auto; max-width: 500px; border: 1px solid var(--gray-200);
+    }
+    .cart-title {
+      font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2rem;
+      background: var(--gradient-1); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--gray-200); }
+    .cart-item-name { font-weight: 600; margin-bottom: 0.25rem; }
+    .cart-item-price { color: var(--gray-600); font-size: 0.9rem; }
+    .remove-btn {
+      background: var(--danger); color: white; border: none;
+      padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease;
+    }
+    .remove-btn:hover { background: #dc2626; transform: translateY(-2px); }
+    .cart-total { font-size: 1.5rem; font-weight: 700; text-align: center; margin: 2rem 0; padding: 1rem; background: var(--gray-50); border-radius: 1rem; color: var(--primary); }
+    .checkout-btn {
+      width: 100%; background: var(--gradient-1); color: white;
+      border: none; padding: 1rem 2rem; border-radius: 1rem;
+      font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem;
+    }
+    .checkout-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: var(--shadow-xl); }
+    .checkout-btn:disabled { background: var(--gray-300); cursor: not-allowed; }
+
+    /* ── Dashboard Button ── */
+    .dashboard-btn {
+      width: 100%; margin-top: 1rem; padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white; border: none; border-radius: 1rem;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(15,52,96,0.4);
+      letter-spacing: 0.5px;
+    }
+    .dashboard-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(15,52,96,0.5); }
+
+    /* ── Payment Modal ── */
+    .modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+      display: none; justify-content: center; align-items: center; z-index: 2000;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: white; border-radius: 2rem; width: 90%; max-width: 700px;
+      max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-2xl);
+    }
+    .payment-content { padding: 3rem; }
+    .payment-title {
+      font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 2rem;
+      background: var(--gradient-1); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .bill-summary { background: var(--gray-50); border-radius: 1.5rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid var(--gray-200); }
+    .bill-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-200); font-size: 1rem; }
+    .bill-item:last-child { border-bottom: 2px solid #495057; font-weight: bold; font-size: 1.1rem; color: #495057; margin-top: 0.5rem; padding-top: 1rem; }
+    .payment-section h3 { margin-bottom: 1.5rem; color: #495057; font-size: 1.25rem; }
+    .payment-option {
+      display: flex; align-items: center; padding: 1.5rem;
+      border: 2px solid var(--gray-200); border-radius: 1rem; margin-bottom: 1rem;
+      cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); background: white;
+    }
+    .payment-option:hover { border-color: var(--primary); background: var(--gray-50); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .payment-option.selected {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1));
+      box-shadow: var(--shadow-lg);
+    }
+    .payment-icon { font-size: 2rem; margin-right: 1.5rem; min-width: 3rem; }
+    .payment-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .payment-desc { color: var(--gray-600); font-size: 0.9rem; }
+    .payment-buttons { display: flex; gap: 1rem; justify-content: space-between; margin-top: 1.5rem; }
+    .payment-buttons .btn-back {
+      flex: 1; padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      background: var(--gray-200); color: var(--gray-700); border: none; transition: all 0.3s ease;
+    }
+    .payment-buttons .btn-back:hover { background: var(--gray-300); }
+    .payment-buttons .btn-pay {
+      flex: 1; padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      background: var(--gradient-1); color: white; border: none; transition: all 0.3s ease;
+    }
+    .payment-buttons .btn-pay:disabled { background: var(--gray-300); color: var(--gray-500); cursor: not-allowed; }
+    .payment-buttons .btn-pay:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .payment-buttons .btn-pay.loading { background: #ffc107; color: #212529; }
+
+    /* ── Success Modal ── */
+    .success-icon { font-size: 4rem; color: var(--success); margin-bottom: 2rem; }
+    .order-number { font-weight: bold; color: var(--primary); }
+
+    /* ── WhatsApp Bot ── */
+    .ai-bot {
+      position: fixed; bottom: 2rem; right: 2rem; width: 70px; height: 70px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      box-shadow: var(--shadow-xl); cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 1000; text-decoration: none;
+    }
+    .ai-bot:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 20px 40px rgba(37,211,102,0.4); }
+    .robot-face {
+      width: 45px; height: 45px; background: white; border-radius: 50%;
+      position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .robot-eyes { display: flex; justify-content: space-between; width: 30px; margin-top: 8px; }
+    .eye { width: 8px; height: 8px; background: #25D366; border-radius: 50%; }
+    .robot-mouth { width: 20px; height: 10px; border-bottom: 3px solid #25D366; border-radius: 0 0 10px 10px; margin-top: 6px; margin-bottom: 8px; }
+    .antenna { position: absolute; top: -12px; width: 3px; height: 10px; background: #25D366; }
+    .antenna::after { content: ''; position: absolute; top: -5px; left: -3px; width: 9px; height: 9px; background: white; border-radius: 50%; border: 2px solid #25D366; }
+    .cheek { position: absolute; width: 6px; height: 6px; background: #f8b5b5; border-radius: 50%; bottom: 12px; }
+    .cheek.left { left: 6px; } .cheek.right { right: 6px; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+      70%  { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* ── Report Dropdowns ── */
+    .monthly-dropdown-container, .yearly-dropdown-container {
+      position: relative; display: inline-block; font-family: Arial, sans-serif;
+      width: 100%; text-align: center; margin-bottom: 1rem;
+    }
+    .monthly-dropdown-btn, .yearly-dropdown-btn {
+      background: linear-gradient(145deg,#ffffff,#f0f0f0); color: #333;
+      padding: 15px 40px; border: 2px solid #dee2e6; border-bottom: none;
+      border-radius: 12px 12px 0 0; cursor: pointer; font-size: 16px; font-weight: 600;
+      transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 12px;
+      min-width: 320px; width: 100%; justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .monthly-dropdown-btn:hover, .monthly-dropdown-btn.active { background: #007bff; color: white; border-color: #007bff; }
+    .yearly-dropdown-btn:hover, .yearly-dropdown-btn.active  { background: #28a745; color: white; border-color: #28a745; }
+    .monthly-arrow, .yearly-arrow { transition: transform 0.3s ease; font-size: 10px; }
+    .monthly-dropdown-btn.active .monthly-arrow,
+    .yearly-dropdown-btn.active .yearly-arrow { transform: rotate(180deg); }
+    .monthly-dropdown-list, .yearly-dropdown-list {
+      position: absolute; top: calc(100% - 2px); left: 0; width: 100%;
+      background: white; border: 2px solid #007bff; border-top: none;
+      border-radius: 0 0 12px 12px; box-shadow: 0 8px 25px rgba(0,123,255,0.15);
+      opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000;
+      max-height: 280px; overflow-y: auto; transform: translateY(-10px);
+    }
+    .yearly-dropdown-list { border-color: #28a745; }
+    .monthly-dropdown-list.show, .yearly-dropdown-list.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .monthly-dropdown-link {
+      padding: 12px 20px; cursor: pointer; transition: all 0.2s ease;
+      color: #333; font-weight: 500; border-bottom: 1px solid #f5f5f5;
+      text-decoration: none; display: block; font-size: 14px;
+    }
+    .monthly-dropdown-link:last-child { border-radius: 0 0 12px 12px; border-bottom: none; }
+    .monthly-dropdown-link:hover { background: linear-gradient(135deg,#007bff,#0056b3); color: white; transform: translateX(3px); }
+    .year-group { border-bottom: 2px solid #e9ecef; }
+    .year-group:last-child { border-bottom: none; }
+    .year-header {
+      padding: 12px 20px; background: linear-gradient(135deg,#28a745,#20c997);
+      color: white; font-weight: 600; font-size: 15px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .year-header:hover { background: linear-gradient(135deg,#20c997,#28a745); }
+    .months-list { display: none; background: #f8f9fa; }
+    .months-list.show { display: block; }
+    .yearly-dropdown-link {
+      padding: 10px 30px; cursor: pointer; transition: all 0.2s ease; color: #495057;
+      font-weight: 400; border-bottom: 1px solid #dee2e6; text-decoration: none; display: block; font-size: 13px;
+    }
+    .yearly-dropdown-link:last-child { border-bottom: none; }
+    .yearly-dropdown-link:hover { background: linear-gradient(135deg,#28a745,#1e7e34); color: white; transform: translateX(5px); }
+    .year-arrow { transition: transform 0.3s ease; font-size: 10px; cursor: pointer; padding: 5px; margin-left: 10px; }
+    .year-header.active .year-arrow { transform: rotate(180deg); }
+    .report-section { padding: 2rem 0; }
+
+    /* ── Footer ── */
+    footer { background: var(--gray-900); color: white; text-align: center; padding: 3rem 0; margin-top: 5rem; }
+    .footer-content { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Animations ── */
+    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes loading { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes successAnim { 0% { transform: scale(0) rotate(0deg); } 50% { transform: scale(1.2) rotate(180deg); } 100% { transform: scale(1) rotate(360deg); } }
+    .success-icon { animation: successAnim 0.6s ease; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .payment-content { padding: 2rem; }
+      .ai-bot { bottom: 1rem; right: 1rem; width: 60px; height: 60px; }
+      .payment-buttons { flex-direction: column; }
+      .monthly-dropdown-btn, .yearly-dropdown-btn { min-width: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">AB Tiles</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#cart">Cart</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Premium Tiles for Modern Spaces</h1>
+      <p>Transform your home with our exquisite collection of designer tiles. Quality craftsmanship meets contemporary aesthetics.</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">Explore Collection</a>
+        <a href="#contact" class="btn btn-secondary">Get Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <div class="container">
+
+    <!-- Products -->
+    <section id="products">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Our Premium Collection</h2>
+        <p class="section-subtitle">Discover our carefully curated selection of high-quality tiles, each piece crafted to perfection for your dream spaces.</p>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart">
+      <div class="cart-section fade-in">
+        <h2 class="cart-title">Your Cart</h2>
+        <div id="cart-items">
+          <p style="text-align:center;color:var(--gray-500);font-style:italic;">Your cart is empty</p>
+        </div>
+        <div id="cart-total" class="cart-total">Total: ₹0.00</div>
+        <button id="checkout-btn" class="checkout-btn" disabled>Proceed to Checkout</button>
+        <button class="dashboard-btn" onclick="openSalesDashboard()">📊 View Sales Dashboard</button>
+      </div>
+    </section>
+
+    <!-- Reports -->
+    <section class="report-section">
+      <div style="max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;">
+
+
+  </div><!-- end .container -->
+
+  <!-- ── Payment Modal ── -->
+  <div class="modal" id="payment-modal">
+    <div class="modal-content">
+      <div class="payment-content">
+        <h2 class="payment-title">Order Summary</h2>
+        <div class="bill-summary">
+          <div id="bill-items"></div>
+        </div>
+        <div class="payment-section">
+          <h3>Choose Payment Method</h3>
+          <div id="payment-options">
+            <div class="payment-option" data-method="upi">
+              <div class="payment-icon">📱</div>
+              <div><div class="payment-name">UPI Payment</div><div class="payment-desc">Pay via PhonePe, GPay, Paytm, BHIM</div></div>
+            </div>
+            <div class="payment-option" data-method="card">
+              <div class="payment-icon">💳</div>
+              <div><div class="payment-name">Credit/Debit Card</div><div class="payment-desc">Visa, Mastercard, RuPay accepted</div></div>
+            </div>
+            <div class="payment-option" data-method="netbanking">
+              <div class="payment-icon">🏦</div>
+              <div><div class="payment-name">Net Banking</div><div class="payment-desc">All major banks supported</div></div>
+            </div>
+            <div class="payment-option" data-method="wallet">
+              <div class="payment-icon">👛</div>
+              <div><div class="payment-name">Digital Wallets</div><div class="payment-desc">Paytm, Amazon Pay, Mobikwik</div></div>
+            </div>
+            <div class="payment-option" data-method="cod">
+              <div class="payment-icon">💵</div>
+              <div><div class="payment-name">Cash on Delivery</div><div class="payment-desc">Pay when your order arrives</div></div>
+            </div>
+            <div class="payment-option" data-method="emi">
+              <div class="payment-icon">📊</div>
+              <div><div class="payment-name">EMI Options</div><div class="payment-desc">0% EMI on select cards</div></div>
+            </div>
+          </div>
+          <div class="payment-buttons">
+            <button class="btn-back" onclick="goBack()">Back to Cart</button>
+            <button class="btn-pay" id="pay-button" onclick="processPayment()" disabled>Select Payment Method</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Success Modal ── -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content">
+      <div class="payment-content" style="text-align:center;">
+        <div class="success-icon">✅</div>
+        <h3>Payment Successful!</h3>
+        <p>Thank you for your purchase. Your order has been placed successfully.</p>
+        <p>Order Number: <span class="order-number" id="order-number">#AB123456</span></p>
+        <p style="margin-top:1rem;">You will receive a confirmation email and SMS shortly.</p>
+        <button class="btn btn-primary" style="margin-top:2rem;background:var(--gradient-1);color:white;" onclick="closeSuccessModal()">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Sales Dashboard Overlay ── -->
+  <div id="sales-dashboard-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#0f172a;overflow-y:auto;font-family:'Inter',sans-serif;">
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334155;position:sticky;top:0;z-index:10;">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📊</div>
+        <div>
+          <div style="color:white;font-size:1.25rem;font-weight:700;">AB Tiles — Sales Dashboard</div>
+          <div style="color:#94a3b8;font-size:0.8rem;">Real-time business analytics</div>
+        </div>
+      </div>
+      <button onclick="closeSalesDashboard()" style="background:#ef4444;color:white;border:none;padding:0.5rem 1.25rem;border-radius:8px;cursor:pointer;font-size:0.95rem;font-weight:600;">✕ Close</button>
+    </div>
+
+    <div style="max-width:1400px;margin:0 auto;padding:2rem;">
+
+      <!-- KPI Cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-bottom:2rem;">
+        <div style="background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(99,102,241,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Total Revenue</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">₹18,42,500</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▲ 12.4% vs last month</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#10b981,#059669);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(16,185,129,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Orders This Month</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">1,284</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▲ 8.1% vs last month</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(245,158,11,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Avg. Order Value</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">₹14,350</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▲ 3.8% vs last month</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#ec4899,#db2777);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(236,72,153,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">New Customers</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">342</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▲ 21.3% vs last month</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#14b8a6,#0d9488);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(20,184,166,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Conversion Rate</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">4.7%</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▲ 0.5% vs last month</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#ef4444,#dc2626);border-radius:1rem;padding:1.5rem;color:white;box-shadow:0 4px 20px rgba(239,68,68,0.3);">
+          <div style="font-size:0.85rem;opacity:0.85;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Returns</div>
+          <div style="font-size:2rem;font-weight:800;margin-bottom:0.25rem;">23</div>
+          <div style="font-size:0.85rem;opacity:0.85;">▼ 5.2% vs last month</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+        <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;">
+          <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">📈 Monthly Revenue (2025)</div>
+          <div style="position:relative;height:220px;">
+            <div id="dash-chart-container" style="display:flex;align-items:flex-end;gap:10px;width:100%;height:100%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-around;margin-top:0.5rem;">
+            <span style="color:#64748b;font-size:0.72rem;">Jan</span><span style="color:#64748b;font-size:0.72rem;">Feb</span><span style="color:#64748b;font-size:0.72rem;">Mar</span><span style="color:#64748b;font-size:0.72rem;">Apr</span><span style="color:#64748b;font-size:0.72rem;">May</span><span style="color:#64748b;font-size:0.72rem;">Jun</span><span style="color:#64748b;font-size:0.72rem;">Jul</span><span style="color:#64748b;font-size:0.72rem;">Aug</span><span style="color:#64748b;font-size:0.72rem;">Sep</span><span style="color:#64748b;font-size:0.72rem;">Oct</span><span style="color:#64748b;font-size:0.72rem;">Nov</span><span style="color:#64748b;font-size:0.72rem;">Dec</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;">
+          <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">🍩 Sales by Category</div>
+          <div style="display:flex;justify-content:center;">
+            <svg viewBox="0 0 160 160" width="160" height="160">
+              <circle cx="80" cy="80" r="60" fill="none" stroke="#6366f1" stroke-width="24" stroke-dasharray="136.7 226.2" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+              <circle cx="80" cy="80" r="60" fill="none" stroke="#10b981" stroke-width="24" stroke-dasharray="94.2 268.7" stroke-dashoffset="-136.7" transform="rotate(-90 80 80)"/>
+              <circle cx="80" cy="80" r="60" fill="none" stroke="#f59e0b" stroke-width="24" stroke-dasharray="62.8 300.1" stroke-dashoffset="-230.9" transform="rotate(-90 80 80)"/>
+              <circle cx="80" cy="80" r="60" fill="none" stroke="#ec4899" stroke-width="24" stroke-dasharray="69.1 293.8" stroke-dashoffset="-293.7" transform="rotate(-90 80 80)"/>
+              <text x="80" y="84" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Sales</text>
+            </svg>
+          </div>
+          <div style="margin-top:1rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;"><div style="width:12px;height:12px;border-radius:3px;background:#6366f1;"></div><span style="color:#cbd5e1;font-size:0.82rem;">Floor Tiles — 36%</span></div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;"><div style="width:12px;height:12px;border-radius:3px;background:#10b981;"></div><span style="color:#cbd5e1;font-size:0.82rem;">Wall Tiles — 25%</span></div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;"><div style="width:12px;height:12px;border-radius:3px;background:#f59e0b;"></div><span style="color:#cbd5e1;font-size:0.82rem;">Designer Tiles — 17%</span></div>
+            <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:12px;height:12px;border-radius:3px;background:#ec4899;"></div><span style="color:#cbd5e1;font-size:0.82rem;">Outdoor Tiles — 22%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Methods & Top Products -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+        <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;">
+          <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">💳 Payment Methods</div>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;"><span style="color:#cbd5e1;font-size:0.85rem;">UPI</span><span style="color:white;font-weight:600;font-size:0.85rem;">48%</span></div><div style="background:#334155;border-radius:99px;height:8px;"><div style="background:linear-gradient(90deg,#6366f1,#8b5cf6);width:48%;height:100%;border-radius:99px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Credit/Debit Card</span><span style="color:white;font-weight:600;font-size:0.85rem;">28%</span></div><div style="background:#334155;border-radius:99px;height:8px;"><div style="background:linear-gradient(90deg,#10b981,#059669);width:28%;height:100%;border-radius:99px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Net Banking</span><span style="color:white;font-weight:600;font-size:0.85rem;">14%</span></div><div style="background:#334155;border-radius:99px;height:8px;"><div style="background:linear-gradient(90deg,#f59e0b,#d97706);width:14%;height:100%;border-radius:99px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Cash on Delivery</span><span style="color:white;font-weight:600;font-size:0.85rem;">10%</span></div><div style="background:#334155;border-radius:99px;height:8px;"><div style="background:linear-gradient(90deg,#ec4899,#db2777);width:10%;height:100%;border-radius:99px;"></div></div></div>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;">
+          <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">🏆 Top Products</div>
+          <div style="display:flex;flex-direction:column;gap:0.9rem;">
+            <div style="display:flex;align-items:center;gap:1rem;"><div style="width:32px;height:32px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;">1</div><div style="flex:1;"><div style="color:white;font-size:0.88rem;font-weight:600;">Italian Marble Floor</div><div style="color:#64748b;font-size:0.75rem;">₹4,20,000 revenue</div></div><span style="color:#10b981;font-size:0.78rem;font-weight:600;">324 units</span></div>
+            <div style="display:flex;align-items:center;gap:1rem;"><div style="width:32px;height:32px;background:linear-gradient(135deg,#94a3b8,#64748b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;">2</div><div style="flex:1;"><div style="color:white;font-size:0.88rem;font-weight:600;">Granite Wall Tile</div><div style="color:#64748b;font-size:0.75rem;">₹3,10,500 revenue</div></div><span style="color:#10b981;font-size:0.78rem;font-weight:600;">258 units</span></div>
+            <div style="display:flex;align-items:center;gap:1rem;"><div style="width:32px;height:32px;background:linear-gradient(135deg,#c2773a,#9c5a2a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;">3</div><div style="flex:1;"><div style="color:white;font-size:0.88rem;font-weight:600;">Porcelain Designer</div><div style="color:#64748b;font-size:0.75rem;">₹2,75,000 revenue</div></div><span style="color:#10b981;font-size:0.78rem;font-weight:600;">196 units</span></div>
+            <div style="display:flex;align-items:center;gap:1rem;"><div style="width:32px;height:32px;background:linear-gradient(135deg,#6366f1,#4f46e5);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;">4</div><div style="flex:1;"><div style="color:white;font-size:0.88rem;font-weight:600;">Outdoor Stone Tile</div><div style="color:#64748b;font-size:0.75rem;">₹2,15,000 revenue</div></div><span style="color:#10b981;font-size:0.78rem;font-weight:600;">148 units</span></div>
+            <div style="display:flex;align-items:center;gap:1rem;"><div style="width:32px;height:32px;background:linear-gradient(135deg,#ec4899,#db2777);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;">5</div><div style="flex:1;"><div style="color:white;font-size:0.88rem;font-weight:600;">Mosaic Art Tile</div><div style="color:#64748b;font-size:0.75rem;">₹1,89,500 revenue</div></div><span style="color:#10b981;font-size:0.78rem;font-weight:600;">132 units</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;margin-bottom:2rem;">
+        <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">📋 Recent Orders</div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead>
+              <tr style="border-bottom:1px solid #334155;">
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Order ID</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Customer</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Product</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Amount</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Payment</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Status</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.75rem 0.5rem;font-weight:600;">Date</th>
+              </tr>
+            </thead>
+            <tbody id="dash-orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Monthly Targets -->
+      <div style="background:#1e293b;border-radius:1rem;padding:1.5rem;border:1px solid #334155;margin-bottom:2rem;">
+        <div style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">🎯 Monthly Targets</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Revenue Target</span><span style="color:white;font-weight:600;font-size:0.85rem;">84%</span></div><div style="background:#334155;border-radius:99px;height:10px;"><div style="background:linear-gradient(90deg,#6366f1,#8b5cf6);width:84%;height:100%;border-radius:99px;"></div></div><div style="color:#64748b;font-size:0.75rem;margin-top:0.4rem;">₹18.4L of ₹22L</div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Orders Target</span><span style="color:white;font-weight:600;font-size:0.85rem;">91%</span></div><div style="background:#334155;border-radius:99px;height:10px;"><div style="background:linear-gradient(90deg,#10b981,#059669);width:91%;height:100%;border-radius:99px;"></div></div><div style="color:#64748b;font-size:0.75rem;margin-top:0.4rem;">1,284 of 1,400 orders</div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#cbd5e1;font-size:0.85rem;">New Customers</span><span style="color:white;font-weight:600;font-size:0.85rem;">68%</span></div><div style="background:#334155;border-radius:99px;height:10px;"><div style="background:linear-gradient(90deg,#f59e0b,#d97706);width:68%;height:100%;border-radius:99px;"></div></div><div style="color:#64748b;font-size:0.75rem;margin-top:0.4rem;">342 of 500 customers</div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#cbd5e1;font-size:0.85rem;">Customer Satisfaction</span><span style="color:white;font-weight:600;font-size:0.85rem;">96%</span></div><div style="background:#334155;border-radius:99px;height:10px;"><div style="background:linear-gradient(90deg,#ec4899,#db2777);width:96%;height:100%;border-radius:99px;"></div></div><div style="color:#64748b;font-size:0.75rem;margin-top:0.4rem;">4.8 / 5.0 rating</div></div>
+        </div>
+      </div>
+
+      <!-- 5-Year Customer Data -->
+      <div style="background:#1e293b;border-radius:1rem;padding:1.75rem;border:1px solid #334155;margin-bottom:2rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+          <div style="color:white;font-size:1.15rem;font-weight:700;">👥 5-Year Customer Data (2021–2025)</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+            <select id="cust-year-filter" onchange="renderCustomerData()" style="background:#0f172a;color:white;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.75rem;font-size:0.85rem;cursor:pointer;outline:none;">
+              <option value="all">All Years</option>
+              <option value="2021">2021</option><option value="2022">2022</option>
+              <option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option>
+            </select>
+            <select id="cust-month-filter" onchange="renderCustomerData()" style="background:#0f172a;color:white;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.75rem;font-size:0.85rem;cursor:pointer;outline:none;">
+              <option value="all">All Months</option>
+              <option value="Jan">January</option><option value="Feb">February</option><option value="Mar">March</option>
+              <option value="Apr">April</option><option value="May">May</option><option value="Jun">June</option>
+              <option value="Jul">July</option><option value="Aug">August</option><option value="Sep">September</option>
+              <option value="Oct">October</option><option value="Nov">November</option><option value="Dec">December</option>
+            </select>
+            <select id="cust-status-filter" onchange="renderCustomerData()" style="background:#0f172a;color:white;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.75rem;font-size:0.85rem;cursor:pointer;outline:none;">
+              <option value="all">All Status</option>
+              <option value="Active">Active</option><option value="New">New</option>
+              <option value="Returning">Returning</option><option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div id="cust-kpi-strip" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem;"></div>
+        <div style="margin-bottom:1.5rem;">
+          <div style="color:#94a3b8;font-size:0.82rem;font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.5px;">📊 Monthly New Customers</div>
+          <div style="height:120px;display:flex;align-items:flex-end;gap:4px;background:#0f172a;border-radius:0.75rem;padding:0.75rem;" id="cust-monthly-chart"></div>
+          <div id="cust-chart-labels" style="display:flex;justify-content:space-around;margin-top:0.4rem;"></div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
+            <thead>
+              <tr style="border-bottom:1px solid #334155;">
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">#</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Customer</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">City</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Year</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Month</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Total Orders</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Total Spent</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Fav Category</th>
+                <th style="text-align:left;color:#94a3b8;padding:0.6rem 0.5rem;font-weight:600;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="cust-table-body"></tbody>
+          </table>
+        </div>
+        <div id="cust-pagination" style="color:#64748b;font-size:0.78rem;margin-top:1rem;text-align:right;"></div>
+      </div>
+
+    </div>
+  </div><!-- end sales dashboard -->
+
+  <!-- ── WhatsApp Bot ── -->
+  <a href="https://wa.me/+919309574534" class="ai-bot pulse" target="_blank" title="Any queries? Chat with us">
+    <div class="robot-face">
+      <div class="antenna"></div>
+      <div class="robot-eyes"><div class="eye"></div><div class="eye"></div></div>
+      <div class="robot-mouth"></div>
+      <div class="cheek left"></div>
+      <div class="cheek right"></div>
+    </div>
+  </a>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 AB Tiles. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════ JAVASCRIPT ═══════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Product Data ──
+    const conversionRate = 83;
+    const products = [
+      { id: 1, name: 'Ceramic Tiles',   price: 20 * conversionRate, image: 'https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2024/10/14130155/different-types-of-ceramic-tile-designs.jpg' },
+      { id: 2, name: 'Porcelain Tiles', price: 15 * conversionRate, image: 'https://cdn.prod.website-files.com/611e33de5446a74e18a9324c/6419f8ed14c757e094b277db_porcelain%20tiles%20pros%20and%20cons.webp' },
+      { id: 3, name: 'Mosaic Tiles',    price: 18 * conversionRate, image: 'https://tse1.mm.bing.net/th/id/OIP.XeCnH5KqurcMIsQLAFIK3AHaHa?pid=Api&P=0&h=220' },
+      { id: 4, name: 'Marble Tiles',    price: 30 * conversionRate, image: 'https://static.vecteezy.com/system/resources/previews/027/941/203/large_2x/high-resolution-italian-marble-texture-background-breccia-marble-tiles-glossy-granite-slab-polished-quartz-ceramic-floor-tile-photo.jpg' },
+      { id: 5, name: 'Granite Tiles',   price: 25 * conversionRate, image: 'https://tse2.mm.bing.net/th/id/OIP.uEqp3SB9p0fCViVFGx1wLgHaFD?pid=Api&P=0&h=220' },
+    ];
+
+    let cart = [];
+    let selectedPaymentMethod = '';
+
+    // ── Render Products ──
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = products.map(p => `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${p.image}" alt="${p.name}" loading="lazy"/>
+            <div class="product-overlay"><span class="quick-view">Quick View</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-price">₹${p.price.toFixed(2)} per sq. ft.</div>
+            <button class="add-to-cart" data-id="${p.id}">Add to Cart</button>
+          </div>
+        </div>`).join('');
+    }
+
+    // ── Render Cart ──
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const totalEl   = document.getElementById('cart-total');
+      const btn       = document.getElementById('checkout-btn');
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center;color:var(--gray-500);font-style:italic;">Your cart is empty</p>';
+        totalEl.textContent = 'Total: ₹0.00';
+        btn.disabled = true;
+        return;
+      }
+      let total = 0;
+      container.innerHTML = cart.map((item, i) => {
+        total += item.price * item.quantity;
+        return `<div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name} × ${item.quantity}</div>
+            <div class="cart-item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+          </div>
+          <button class="remove-btn" data-index="${i}">Remove</button>
+        </div>`;
+      }).join('');
+      totalEl.textContent = `Total: ₹${total.toFixed(2)}`;
+      btn.disabled = false;
+    }
+
+    // ── Bill Summary ──
+    function renderBillSummary() {
+      const el = document.getElementById('bill-items');
+      let subtotal = 0;
+      el.innerHTML = cart.map(item => {
+        const t = item.price * item.quantity;
+        subtotal += t;
+        return `<div class="bill-item"><span>${item.name} × ${item.quantity}</span><span>₹${t.toFixed(2)}</span></div>`;
+      }).join('');
+      const gst   = subtotal * 0.18;
+      const total = subtotal + gst;
+      el.innerHTML += `
+        <div class="bill-item"><span>Subtotal</span><span>₹${subtotal.toFixed(2)}</span></div>
+        <div class="bill-item"><span>GST (18%)</span><span>₹${gst.toFixed(2)}</span></div>
+        <div class="bill-item"><span>Shipping</span><span>FREE</span></div>
+        <div class="bill-item"><span>Total Amount</span><span>₹${total.toFixed(2)}</span></div>`;
+    }
+
+    // ── Cart Actions ──
+    function addToCart(id) {
+      const p = products.find(p => p.id === id);
+      if (!p) return;
+      const existing = cart.find(i => i.id === id);
+      existing ? existing.quantity++ : cart.push({ ...p, quantity: 1 });
+      renderCart();
+    }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    // ── Payment ──
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+      document.querySelector(`[data-method="${method}"]`).classList.add('selected');
+      const payBtn = document.getElementById('pay-button');
+      payBtn.disabled = false;
+      const names = { upi:'Pay with UPI', card:'Pay with Card', netbanking:'Pay with Net Banking', wallet:'Pay with Wallet', cod:'Place Order (COD)', emi:'Choose EMI Plan' };
+      payBtn.textContent = names[method] || 'Proceed to Payment';
+    }
+
+    function processPayment() {
+      if (!selectedPaymentMethod) { alert('Please select a payment method'); return; }
+      const btn = document.getElementById('pay-button');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+      btn.classList.add('loading');
+      setTimeout(() => {
+        const orderNum = 'AB' + Date.now().toString().slice(-6);
+        document.getElementById('order-number').textContent = '#' + orderNum;
+        document.getElementById('payment-modal').classList.remove('active');
+        document.getElementById('success-modal').classList.add('active');
+        btn.disabled = false; btn.textContent = 'Select Payment Method'; btn.classList.remove('loading'); btn.disabled = true;
+        selectedPaymentMethod = '';
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+      }, 2500);
+    }
+
+    function goBack() { document.getElementById('payment-modal').classList.remove('active'); }
+
+    function closeSuccessModal() {
+      document.getElementById('success-modal').classList.remove('active');
+      cart = []; renderCart();
+    }
+
+    // ── Event Listeners ──
+    document.getElementById('productsGrid').addEventListener('click', e => {
+      const btn = e.target.closest('[data-id]');
+      if (btn) addToCart(parseInt(btn.dataset.id));
+    });
+    document.getElementById('cart-items').addEventListener('click', e => {
+      const btn = e.target.closest('[data-index]');
+      if (btn) removeFromCart(parseInt(btn.dataset.index));
+    });
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) { alert('Your cart is empty!'); return; }
+      renderBillSummary();
+      document.getElementById('payment-modal').classList.add('active');
+    });
+    document.getElementById('payment-options').addEventListener('click', e => {
+      const opt = e.target.closest('.payment-option');
+      if (opt) selectPaymentMethod(opt.dataset.method);
+    });
+    [document.getElementById('payment-modal'), document.getElementById('success-modal')].forEach(m => {
+      m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.getElementById('payment-modal').classList.remove('active');
+        document.getElementById('success-modal').classList.remove('active');
+      }
+    });
+
+    // ── Report Dropdowns ──
+    function toggleMonthlyDropdown() {
+      document.getElementById('monthlyDropdownList').classList.toggle('show');
+      document.querySelector('.monthly-dropdown-btn').classList.toggle('active');
+    }
+    function closeMonthlyDropdown() {
+      document.getElementById('monthlyDropdownList').classList.remove('show');
+      document.querySelector('.monthly-dropdown-btn').classList.remove('active');
+    }
+    function toggleYearlyDropdown() {
+      document.getElementById('yearlyDropdownList').classList.toggle('show');
+      document.querySelector('.yearly-dropdown-btn').classList.toggle('active');
+    }
+    function toggleYear(year, e) {
+      if (e) e.stopPropagation();
+      document.getElementById('months-' + year).classList.toggle('show');
+    }
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.monthly-dropdown-container')) closeMonthlyDropdown();
+      if (!e.target.closest('.yearly-dropdown-container')) {
+        document.getElementById('yearlyDropdownList').classList.remove('show');
+        document.querySelector('.yearly-dropdown-btn').classList.remove('active');
+      }
+    });
+
+    // ══════════════════════════════════════════
+    // SALES DASHBOARD
+    // ══════════════════════════════════════════
+    function openSalesDashboard() {
+      document.getElementById('sales-dashboard-overlay').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      renderDashboardCharts();
+      renderCustomerData();
+    }
+    function closeSalesDashboard() {
+      document.getElementById('sales-dashboard-overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function renderDashboardCharts() {
+      const monthlyData = [820000,950000,1100000,980000,1250000,1420000,1680000,1530000,1720000,1840000,1620000,1950000];
+      const max = Math.max(...monthlyData);
+      const colors = ['#6366f1','#8b5cf6','#a78bfa','#6366f1','#8b5cf6','#a78bfa','#6366f1','#8b5cf6','#a78bfa','#6366f1','#8b5cf6','#a78bfa'];
+      const container = document.getElementById('dash-chart-container');
+      if (container) {
+        container.innerHTML = monthlyData.map((val, i) => {
+          const pct = Math.round((val / max) * 100);
+          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="color:#94a3b8;font-size:0.65rem;font-weight:600;">&#8377;${(val/100000).toFixed(1)}L</div>
+            <div style="flex:1;width:100%;display:flex;align-items:flex-end;">
+              <div style="width:100%;height:${pct}%;background:${colors[i]};border-radius:6px 6px 0 0;min-height:4px;"></div>
+            </div></div>`;
+        }).join('');
+      }
+      const orders = [
+        {id:'#AB-2025-1284',cust:'Rahul Sharma',prod:'Italian Marble Floor',amt:'&#8377;42,000',pay:'UPI',status:'Delivered',date:'27 Mar 2025'},
+        {id:'#AB-2025-1283',cust:'Priya Mehta',prod:'Granite Wall Tile',amt:'&#8377;28,500',pay:'Card',status:'Shipped',date:'27 Mar 2025'},
+        {id:'#AB-2025-1282',cust:'Anil Desai',prod:'Porcelain Designer',amt:'&#8377;35,000',pay:'Net Banking',status:'Processing',date:'26 Mar 2025'},
+        {id:'#AB-2025-1281',cust:'Sneha Joshi',prod:'Outdoor Stone Tile',amt:'&#8377;19,800',pay:'UPI',status:'Delivered',date:'26 Mar 2025'},
+        {id:'#AB-2025-1280',cust:'Vikram Patel',prod:'Mosaic Art Tile',amt:'&#8377;22,500',pay:'COD',status:'Delivered',date:'25 Mar 2025'},
+        {id:'#AB-2025-1279',cust:'Kavita Singh',prod:'Italian Marble Floor',amt:'&#8377;48,000',pay:'Card',status:'Delivered',date:'25 Mar 2025'},
+        {id:'#AB-2025-1278',cust:'Rohan Gupta',prod:'Granite Wall Tile',amt:'&#8377;31,200',pay:'UPI',status:'Cancelled',date:'24 Mar 2025'},
+        {id:'#AB-2025-1277',cust:'Meena Nair',prod:'Designer Mosaic',amt:'&#8377;15,600',pay:'UPI',status:'Delivered',date:'24 Mar 2025'},
+      ];
+      const statusColor = {Delivered:'#10b981',Shipped:'#6366f1',Processing:'#f59e0b',Cancelled:'#ef4444'};
+      const tbody = document.getElementById('dash-orders-tbody');
+      if (tbody) {
+        tbody.innerHTML = orders.map(o => `
+          <tr style="border-bottom:1px solid #1e293b;">
+            <td style="color:#6366f1;padding:0.75rem 0.5rem;font-weight:600;">${o.id}</td>
+            <td style="color:#e2e8f0;padding:0.75rem 0.5rem;">${o.cust}</td>
+            <td style="color:#cbd5e1;padding:0.75rem 0.5rem;">${o.prod}</td>
+            <td style="color:white;padding:0.75rem 0.5rem;font-weight:600;">${o.amt}</td>
+            <td style="color:#94a3b8;padding:0.75rem 0.5rem;">${o.pay}</td>
+            <td style="padding:0.75rem 0.5rem;"><span style="background:${statusColor[o.status]}22;color:${statusColor[o.status]};padding:0.2rem 0.6rem;border-radius:99px;font-size:0.78rem;font-weight:600;">${o.status}</span></td>
+            <td style="color:#64748b;padding:0.75rem 0.5rem;font-size:0.82rem;">${o.date}</td>
+          </tr>`).join('');
+      }
+    }
+
+    // ── 5-Year Customer Data ──
+    const MONTHS_LIST     = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const CATEGORIES_LIST = ['Floor Tiles','Wall Tiles','Designer Tiles','Outdoor Tiles','Mosaic Tiles'];
+    const CITIES_LIST     = ['Pune','Mumbai','Nashik','Nagpur','Aurangabad','Thane','Kolhapur','Solapur','Satara','Latur'];
+    const STATUS_LIST     = ['Active','New','Returning','Inactive'];
+    const STATUS_CLRS     = {Active:'#10b981',New:'#6366f1',Returning:'#f59e0b',Inactive:'#ef4444'};
+
+    function seededRand(seed) { var x = Math.sin(seed+1)*10000; return x-Math.floor(x); }
+
+    var ALL_CUSTOMERS = (function() {
+      var data = [], id = 1;
+      var monthlyCounts = {
+        2021:[28,31,35,33,38,42,40,37,43,48,44,30],
+        2022:[34,38,43,41,46,51,49,45,52,58,53,37],
+        2023:[41,45,52,49,55,62,58,54,63,70,64,44],
+        2024:[52,57,66,63,70,78,74,68,79,88,81,56],
+        2025:[65,72,82,78,88,98,94,86,99,110,101,70],
+      };
+      var names = ['Rahul Sharma','Priya Mehta','Anil Desai','Sneha Joshi','Vikram Patel','Kavita Singh','Rohan Gupta','Meena Nair','Suresh Rao','Anjali Kulkarni','Deepak Verma','Pooja Shinde','Manish Jadhav','Sunita Pawar','Ravi Kumar','Geeta Banerjee','Nitin Patil','Swati More','Prasad Bhosale','Rekha Deshpande','Kiran Sawant','Archana Narkar','Sanjay Gaikwad','Priyanka Salvi','Amol Chitale','Vaishali Kadam','Mahesh Thakur','Nisha Jain','Tejas Wagh','Smita Joshi','Vijay Kulkarni','Sarika Patil','Akash More','Dipali Nair','Sandesh Rao','Pallavi Joshi','Ganesh Pawar','Shruti Mehta','Omkar Desai','Neha Singh'];
+      var nameIdx = 0;
+      [2021,2022,2023,2024,2025].forEach(function(year) {
+        MONTHS_LIST.forEach(function(mon, mi) {
+          var count = monthlyCounts[year][mi];
+          for (var c = 0; c < count; c++) {
+            var seed = year*10000+mi*100+c;
+            data.push({
+              id: id++,
+              name: names[nameIdx % names.length],
+              city: CITIES_LIST[Math.floor(seededRand(seed+4)*CITIES_LIST.length)],
+              year: year, month: mon,
+              orders: Math.floor(seededRand(seed+1)*8)+1,
+              spent: (Math.floor(seededRand(seed+1)*8)+1) * (Math.floor(seededRand(seed+2)*25000)+8000),
+              category: CATEGORIES_LIST[Math.floor(seededRand(seed+5)*CATEGORIES_LIST.length)],
+              status: STATUS_LIST[Math.floor(seededRand(seed+3)*4)],
+            });
+            nameIdx++;
+          }
+        });
+      });
+      return data;
+    })();
+
+    function renderCustomerData() {
+      var yearVal  = document.getElementById('cust-year-filter').value;
+      var monthVal = document.getElementById('cust-month-filter').value;
+      var statVal  = document.getElementById('cust-status-filter').value;
+      var filtered = ALL_CUSTOMERS.filter(function(c) {
+        if (yearVal  !== 'all' && c.year  !== parseInt(yearVal))  return false;
+        if (monthVal !== 'all' && c.month !== monthVal)            return false;
+        if (statVal  !== 'all' && c.status !== statVal)            return false;
+        return true;
+      });
+      var totalCust   = filtered.length;
+      var totalSpent  = filtered.reduce((s,c) => s+c.spent, 0);
+      var totalOrders = filtered.reduce((s,c) => s+c.orders, 0);
+      var activeCust  = filtered.filter(c => c.status==='Active').length;
+      var newCust     = filtered.filter(c => c.status==='New').length;
+      var avgSpent    = totalCust > 0 ? Math.round(totalSpent/totalCust) : 0;
+      var kpis = [
+        {label:'Total Customers', val:totalCust.toLocaleString(),                         color:'#6366f1'},
+        {label:'Total Revenue',   val:'&#8377;'+Math.round(totalSpent/100000)+'L',        color:'#10b981'},
+        {label:'Total Orders',    val:totalOrders.toLocaleString(),                        color:'#f59e0b'},
+        {label:'Active',          val:activeCust.toLocaleString(),                         color:'#10b981'},
+        {label:'New Joins',       val:newCust.toLocaleString(),                            color:'#8b5cf6'},
+        {label:'Avg. Spent',      val:'&#8377;'+avgSpent.toLocaleString(),                color:'#ec4899'},
+      ];
+      document.getElementById('cust-kpi-strip').innerHTML = kpis.map(k =>
+        `<div style="background:#0f172a;border-radius:0.75rem;padding:1rem;border:1px solid #334155;text-align:center;">
+          <div style="color:#64748b;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.35rem;">${k.label}</div>
+          <div style="color:${k.color};font-size:1.35rem;font-weight:800;">${k.val}</div>
+        </div>`).join('');
+      var monthGroups = {};
+      MONTHS_LIST.forEach(m => monthGroups[m] = 0);
+      filtered.forEach(c => { if (monthGroups[c.month] !== undefined) monthGroups[c.month]++; });
+      var chartVals = MONTHS_LIST.map(m => monthGroups[m]);
+      var chartMax  = Math.max(...chartVals, 1);
+      var barColors = ['#6366f1','#8b5cf6','#a78bfa','#6366f1','#8b5cf6','#10b981','#059669','#34d399','#f59e0b','#ec4899','#14b8a6','#a78bfa'];
+      document.getElementById('cust-monthly-chart').innerHTML = chartVals.map((v,i) => {
+        var pct = Math.round((v/chartMax)*100);
+        return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;height:100%;">
+          <div style="color:#94a3b8;font-size:0.6rem;font-weight:600;">${v||''}</div>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;">
+            <div style="width:100%;height:${pct||2}%;background:${barColors[i]};border-radius:4px 4px 0 0;min-height:3px;"></div>
+          </div></div>`;
+      }).join('');
+      document.getElementById('cust-chart-labels').innerHTML = MONTHS_LIST.map(m =>
+        `<span style="color:#64748b;font-size:0.65rem;">${m}</span>`).join('');
+      var shown = filtered.slice(0, 25);
+      document.getElementById('cust-table-body').innerHTML = shown.map(c =>
+        `<tr style="border-bottom:1px solid #1e293b;">
+          <td style="color:#64748b;padding:0.55rem 0.5rem;">${c.id}</td>
+          <td style="color:#e2e8f0;padding:0.55rem 0.5rem;font-weight:600;">${c.name}</td>
+          <td style="color:#94a3b8;padding:0.55rem 0.5rem;">${c.city}</td>
+          <td style="color:#6366f1;padding:0.55rem 0.5rem;font-weight:700;">${c.year}</td>
+          <td style="color:#94a3b8;padding:0.55rem 0.5rem;">${c.month}</td>
+          <td style="color:white;padding:0.55rem 0.5rem;text-align:center;">${c.orders}</td>
+          <td style="color:#10b981;padding:0.55rem 0.5rem;font-weight:600;">&#8377;${c.spent.toLocaleString()}</td>
+          <td style="color:#cbd5e1;padding:0.55rem 0.5rem;font-size:0.78rem;">${c.category}</td>
+          <td style="padding:0.55rem 0.5rem;"><span style="background:${STATUS_CLRS[c.status]}22;color:${STATUS_CLRS[c.status]};padding:0.15rem 0.55rem;border-radius:99px;font-size:0.72rem;font-weight:600;">${c.status}</span></td>
+        </tr>`).join('');
+      document.getElementById('cust-pagination').textContent =
+        'Showing ' + shown.length + ' of ' + filtered.length + ' customers' + (filtered.length > 25 ? ' — apply filters to narrow results' : '');
+    }
+
+    // ── Init ──
+    renderProducts();
+    renderCart();
+  </script>
+
+</body>
+</html>

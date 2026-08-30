@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tile Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 40px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tile Order Form</h2>
+
+  <form id="orderForm">
+    <label>Item Name:</label>
+    <input type="text" id="itemName" placeholder="Enter tile name" required>
+
+    <label>Quantity:</label>
+    <input type="number" id="quantity" min="1" placeholder="Enter quantity" required>
+
+    <label>Price per Item (₹):</label>
+    <input type="number" id="price" min="1" placeholder="Enter price" required>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <h2>Placed Orders</h2>
+  <table id="ordersTable">
+    <tr>
+      <th>Order ID</th>
+      <th>Item Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </table>
+
+  <script>
+    let orderCount = 0;
+    const form = document.getElementById("orderForm");
+    const table = document.getElementById("ordersTable");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop page refresh
+
+      // Get input values
+      const itemName = document.getElementById("itemName").value;
+      const quantity = document.getElementById("quantity").value;
+      const price = document.getElementById("price").value;
+
+      // Calculate total
+      const total = quantity * price;
+
+      // Increment order count
+      orderCount++;
+
+      // Create new row
+      const row = table.insertRow();
+      row.insertCell(0).innerText = orderCount;
+      row.insertCell(1).innerText = itemName;
+      row.insertCell(2).innerText = quantity;
+      row.insertCell(3).innerText = "₹" + price;
+      row.insertCell(4).innerText = "₹" + total;
+
+      // Reset form
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
